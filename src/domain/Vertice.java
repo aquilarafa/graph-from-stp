@@ -8,9 +8,15 @@ package domain;
 public class Vertice {
 
 	private Integer id;
+	private String label;
 
 	public Vertice(Integer idP) {
 		this.id = idP;
+	}
+	
+	public Vertice(Integer idP, String labelP) {
+		this.id = idP;
+		this.label = labelP;
 	}
 
 	public Integer getId() {
@@ -50,6 +56,16 @@ public class Vertice {
 	public String toString() {
 		return "Vértice : " + id;
 	}
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
+	
+	
 
 
 }

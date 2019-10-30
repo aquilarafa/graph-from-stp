@@ -1,7 +1,8 @@
 package domain;
 
 import java.util.ArrayList;
-
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -73,10 +74,42 @@ public class GrafoPorLista implements Grafo{
 		return arestas;
 	}
 
+	public List<Vertice> getVertices() {
+		List<Vertice> res = new ArrayList<>();
+		for(int i = 0; i < getNumVertices(); i++) {
+			res.add(this.list[i+1].getFirst());
+		}
+		
+		return res;
+	}
+
+	@Override
+	public void addVertice(Vertice vertice) {
+		LinkedList<Vertice> vNew = new LinkedList<Vertice>();
+		vNew.addFirst(vertice);
+		this.list[vertice.getId()+1] = vNew;
+		
+	}
+
 	public LinkedList<Vertice>[] getList() {
-		return list;
+		return this.list;
 	}
     
+	@Override
+	public String toString(){
+		StringBuilder s = new StringBuilder();
+        for (int i = 1; i <=getNumVertices() ; i++) {
+            if(getList()[i].size()>0) {
+                s.append("Vértice " + i + " está conectado ao: ");
+                for (int j = 0; j < getList()[i].size(); j++) {
+                    s.append(getList()[i].get(j) + " ");
+                }
+                s.append("\n");
+            }
+        }
+        
+        return s.toString();
+    }
     
 
 

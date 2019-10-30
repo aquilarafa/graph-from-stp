@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.List;
+
 /**
  * Interface para as diferentes implementações de estrutura de Grafo
  * @author aquila
@@ -29,5 +31,19 @@ public interface Grafo {
 	 * @param a
 	 */
 	public void addAresta(Aresta a);
+
+	/**
+	 * 
+	 * @param vertice
+	 */
+	public void addVertice(Vertice vertice);
+
+	/**
+	 * 
+	 * @return
+	 */
+	public List<Vertice> getVertices();
+
+
 
 }
