@@ -42,6 +42,11 @@ public class GrafoPorMatriz implements Grafo{
 	
 	public String toString() {
         StringBuilder s = new StringBuilder();
+        s.append("  ");
+        for (int i = 0; i < numVertices; i++) {
+        	s.append(" " + i);
+        }
+        s.append("\n");
         for (int i = 0; i < numVertices; i++) {
             s.append(i + ": ");
             for (int j : adjMatrix[i]) {

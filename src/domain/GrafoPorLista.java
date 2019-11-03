@@ -77,6 +77,21 @@ public class GrafoPorLista implements Grafo{
 		return list;
 	}
     
+	@Override
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		for (int i = 1; i <=this.numVertices; i++) {
+            if(this.list[i].size()>0) {
+                s.append("Vértice " + i + " está conectado ao: ");
+                for (int j = 0; j < this.list[i].size(); j++) {
+                    s.append(this.list[i].get(j) + " ");
+                }
+                s.append("\n");
+            }
+        }
+		
+		return s.toString();
+	}
     
 
 
