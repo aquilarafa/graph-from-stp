@@ -1,7 +1,8 @@
 package domain;
 
 import java.util.ArrayList;
-
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -73,8 +74,25 @@ public class GrafoPorLista implements Grafo{
 		return arestas;
 	}
 
+	public List<Vertice> getVertices() {
+		List<Vertice> res = new ArrayList<>();
+		for(int i = 0; i < getNumVertices(); i++) {
+			res.add(this.list[i+1].getFirst());
+		}
+		
+		return res;
+	}
+
+	@Override
+	public void addVertice(Vertice vertice) {
+		LinkedList<Vertice> vNew = new LinkedList<Vertice>();
+		vNew.addFirst(vertice);
+		this.list[vertice.getId()+1] = vNew;
+		
+	}
+
 	public LinkedList<Vertice>[] getList() {
-		return list;
+		return this.list;
 	}
     
 	@Override
@@ -92,7 +110,6 @@ public class GrafoPorLista implements Grafo{
 		
 		return s.toString();
 	}
-    
 
 
 }

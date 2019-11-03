@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.List;
+
 /**
  * Estrutura de grafo implementado usando matriz de adjacencia
  * 
@@ -12,7 +14,7 @@ public class GrafoPorMatriz implements Grafo{
 	private int numVertices;
 
 	public GrafoPorMatriz(int numVerticesParam) {
-		this.numVertices = numVerticesParam + 1;
+		this.numVertices = numVerticesParam;
 		adjMatrix = new int[numVertices][numVertices];
 	}
 
@@ -24,8 +26,8 @@ public class GrafoPorMatriz implements Grafo{
 	public void addAresta(Aresta a){
     	Vertice origV = a.getV1();
     	Vertice destV = a.getV2();
-    	adjMatrix[origV.getId()][destV.getId()] = a.getPeso();
-		adjMatrix[destV.getId()][origV.getId()] = a.getPeso();
+    	adjMatrix[origV.getId()-1][destV.getId()-1] = a.getPeso();
+		adjMatrix[destV.getId()-1][origV.getId()-1] = a.getPeso();
     }
 
 	public void removeAresta(int v1, int v2) {
@@ -48,7 +50,7 @@ public class GrafoPorMatriz implements Grafo{
         }
         s.append("\n");
         for (int i = 0; i < numVertices; i++) {
-            s.append(i + ": ");
+            s.append((i+1) + ": ");
             for (int j : adjMatrix[i]) {
                 s.append((j) + " ");
             }
@@ -56,5 +58,21 @@ public class GrafoPorMatriz implements Grafo{
         }
         return s.toString();
     }
+
+	@Override
+	public void addVertice(Vertice vertice) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Vertice> getVertices() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	
+	
 
 }
