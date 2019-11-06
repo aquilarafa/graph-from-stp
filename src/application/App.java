@@ -10,27 +10,22 @@ import util.StepFileReader;
 
 public class App {
 
-	
 	public static void main(String[] args) {
 		File file = new File("./res/sample2.stp");
 		StepFileReader stp = new StepFileReader(file);
-		
-		
-		
-//		Grafo g = new GrafoPorMatriz(stp.getNumVertices());
-		Grafo g = new GrafoPorLista(stp.getNumVertices());
-		
-		for(Aresta a: stp.getArestas()) {
+
+		Grafo g = new GrafoPorMatriz(stp.getNumVertices());
+		// Grafo g = new GrafoPorLista(stp.getNumVertices());
+
+		for (Aresta a : stp.getArestas()) {
 			System.out.println(a.toString());
 			g.addAresta(a);
 		}
-		
-		
-		
+
 		System.out.println(g.toString());
-		
+
 		System.out.println(g.isAresta(7, 2));
-		
+
 	}
-	
+
 }

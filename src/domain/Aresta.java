@@ -62,11 +62,6 @@ public class Aresta {
 		if (getClass() != obj.getClass())
 			return false;
 		Aresta other = (Aresta) obj;
-		if (peso == null) {
-			if (other.peso != null)
-				return false;
-		} else if (!peso.equals(other.peso))
-			return false;
 		if (v1 == null) {
 			if (other.v1 != null)
 				return false;

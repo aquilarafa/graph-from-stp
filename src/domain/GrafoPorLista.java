@@ -1,8 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,8 +22,8 @@ public class GrafoPorLista implements Grafo{
         arestas = new ArrayList<Aresta>();
         
         //inicializa listas encadeadas
-        list = new LinkedList[numVertices+1];
-        for (int i = 1; i <= numVertices ; i++) {
+        list = new LinkedList[numVertices];
+        for (int i = 0; i < numVertices ; i++) {
         	LinkedList<Vertice> lk = new LinkedList<>();
             list[i] = lk;
         }
@@ -66,7 +65,8 @@ public class GrafoPorLista implements Grafo{
     	return false;
     }
 
-	public int getNumVertices() {
+    @Override
+	public Integer getNumVertices() {
 		return numVertices;
 	}
 
@@ -77,7 +77,7 @@ public class GrafoPorLista implements Grafo{
 	public List<Vertice> getVertices() {
 		List<Vertice> res = new ArrayList<>();
 		for(int i = 0; i < getNumVertices(); i++) {
-			res.add(this.list[i+1].getFirst());
+			res.add(this.list[i].getFirst());
 		}
 		
 		return res;
@@ -98,9 +98,9 @@ public class GrafoPorLista implements Grafo{
 	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		for (int i = 1; i <=this.numVertices; i++) {
+		for (int i = 0; i < this.numVertices; i++) {
             if(this.list[i].size()>0) {
-                s.append("Vértice " + i + " está conectado ao: ");
+                s.append("Vértice " + (i) + " está conectado ao: ");
                 for (int j = 0; j < this.list[i].size(); j++) {
                     s.append(this.list[i].get(j) + " ");
                 }
@@ -109,6 +109,28 @@ public class GrafoPorLista implements Grafo{
         }
 		
 		return s.toString();
+	}
+
+	@Override
+	public Integer getPeso(int v1, int v2) {
+		if(isAresta(v1, v2)) {
+			int i = arestas.indexOf(new Aresta(new Vertice(v1), new Vertice(v2), 0));
+			return arestas.get(i).getPeso();
+		}
+		
+		return -1;
+	}
+	
+	public List<Vertice> getVerticesAdjacentes(int vertice){
+		List<Vertice> res = new ArrayList<>();
+		
+		LinkedList<Vertice> linkedlist= list[vertice];
+		Iterator<Vertice> iterator = linkedlist.iterator();
+		while (iterator.hasNext()) {
+		    res.add(iterator.next());
+		}
+		
+		return res;
 	}
 
 

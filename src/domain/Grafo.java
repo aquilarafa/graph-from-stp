@@ -43,7 +43,11 @@ public interface Grafo {
 	 * @return
 	 */
 	public List<Vertice> getVertices();
+	
+	public Integer getPeso(int v1, int v2);
 
+	public Integer getNumVertices();
 
+	public List<Vertice> getVerticesAdjacentes(int vertice);
 
 }

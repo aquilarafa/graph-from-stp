@@ -75,8 +75,8 @@ public class StepFileReader {
 		while (!l.get(i).equalsIgnoreCase("END")) {
 			String[] edgeLine = l.get(i).split("\\s+");
 			System.out.print("V1: "+ edgeLine[1] + " V2: "+ edgeLine[2] + " V3: " + edgeLine[3]);
-			Vertice v1 = new Vertice(Integer.parseInt(edgeLine[1]));
-			Vertice v2 = new Vertice(Integer.parseInt(edgeLine[2]));
+			Vertice v1 = new Vertice(Integer.parseInt(edgeLine[1])-1);
+			Vertice v2 = new Vertice(Integer.parseInt(edgeLine[2])-1);
 			 int peso = Integer.parseInt(edgeLine[3]);
 			 Aresta aresta = new Aresta(v1,v2, peso);
 			 this.arestas.add(aresta);
